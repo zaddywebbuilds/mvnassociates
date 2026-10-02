@@ -1,0 +1,69 @@
+import type { Metadata, Viewport } from "next";
+import { Manrope } from "next/font/google";
+import "./globals.css";
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mnv-associates.vercel.app";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "MNV Associates | Tax, Advisory & Business Solutions in Dubai",
+    template: "%s | MNV Associates",
+  },
+  description:
+    "MNV Associates provides tax, accounting, CFO, compliance, HR and business advisory solutions for organisations across Dubai and the UAE.",
+  keywords: [
+    "corporate tax UAE",
+    "VAT consultant Dubai",
+    "transfer pricing UAE",
+    "CFO advisory Dubai",
+    "business setup UAE",
+    "accounting services Dubai",
+  ],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "en_AE",
+    url: siteUrl,
+    siteName: "MNV Associates",
+    title: "MNV Associates | Tax, Advisory & Business Solutions in Dubai",
+    description:
+      "Tax, accounting, CFO, compliance, HR and business advisory solutions for organisations across Dubai and the UAE.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MNV Associates | Tax, Advisory & Business Solutions in Dubai",
+    description:
+      "Tax, accounting, CFO, compliance, HR and business advisory solutions for organisations across Dubai and the UAE.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#533278",
+  colorScheme: "light",
+};
+
+export default function RootLayout({ children }: LayoutProps<"/">) {
+  return (
+    <html lang="en" className={`${manrope.variable} antialiased`}>
+      <head>
+        {/* Scroll reveals are observer-driven; without JS the lines must simply be shown. */}
+        <noscript>
+          <style>{`.reveal-lines .line-mask > span{transform:none!important}`}</style>
+        </noscript>
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}
