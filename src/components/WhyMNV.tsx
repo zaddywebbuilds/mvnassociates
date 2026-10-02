@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 import SectionHeading from "./SectionHeading";
 import { Reveal } from "./Reveal";
 
@@ -45,8 +46,8 @@ export default function WhyMNV() {
           <Reveal delay={0.12} className="lg:col-span-5">
             <figure className="relative aspect-[3/4] w-full overflow-hidden rounded-sm sm:aspect-[4/3] lg:aspect-[3/4]">
               <Image
-                src="/images/dubai-coast.jpg"
-                alt="Aerial view of the Dubai coastline and its waterfront architecture"
+                src={asset("/images/why-mnv.webp")}
+                alt="A meeting lounge with floor to ceiling windows overlooking the Dubai skyline at sunset"
                 fill
                 sizes="(max-width: 1023px) 100vw, 38vw"
                 className="object-cover"

@@ -9,7 +9,8 @@ const manrope = Manrope({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://mnv-associates.vercel.app";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://zaddywebbuilds.github.io/mvnassociates";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

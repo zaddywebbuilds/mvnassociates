@@ -61,7 +61,23 @@ npm run build
 npm start
 ```
 
-Deployment target is Vercel.
+## Deployment
+
+The site deploys to GitHub Pages from `main` via GitHub Actions, so the whole thing lives in this one repository with no external host.
+
+Live: https://zaddywebbuilds.github.io/mvnassociates
+
+GitHub Pages serves static files from a project subpath, so that build runs with `GITHUB_PAGES=true`, which switches Next into static export, sets the base path and turns off the image optimizer. Local development and any Node host keep the optimizer, so the flag is opt in rather than permanent.
+
+To reproduce the Pages build locally:
+
+```bash
+GITHUB_PAGES=true NEXT_PUBLIC_BASE_PATH=/mvnassociates npm run build
+```
+
+Because the optimizer is off in that mode, `next/image` emits `src` untouched, so image paths go through a small `asset()` helper that prepends the base path. Photography is pre-converted to WebP at the sizes it actually renders, which is why losing the optimizer costs very little here.
+
+Deploying to Vercel instead needs no changes: leave `GITHUB_PAGES` unset and the optimizer comes back automatically.
 
 ## Performance and accessibility notes
 
@@ -84,7 +100,7 @@ A few judgement calls worth flagging:
 
 - **Nothing is fabricated.** No invented office address, phone number, email, client logos, testimonials, awards, certifications or article dates. The footer lists the city only. Structured data includes just the facts given in the brief.
 - **Navigation anchors resolve.** The nav was reduced to sections that actually exist on this page rather than linking to pages that do not, which would be a dead link in a reviewed submission.
-- **Imagery is checked in, not hotlinked.** Photography is bundled into `public/images` so the build is self contained with no runtime dependency on a third party host. Images are from Unsplash under the Unsplash licence. Conventional corporate stock, handshakes, staged boardrooms and high fives, was deliberately rejected in favour of architectural and abstract geometry.
+- **Imagery is cropped from the supplied art, not used whole.** The source comps arrived as full section mockups with headlines, buttons and UI baked into the pixels. Baked text cannot be selected, translated or reflowed, and it would have collided with the live HTML headlines, so each image was cropped to its clean photographic region instead. The derived WebP set is bundled into `public/images`, roughly 460KB in total, so the build is self contained with no runtime dependency on a third party host. The original comps stay out of the repo.
 - **Gilroy is not bundled.** It is not freely licensable, so Manrope is used as the specified fallback. Swapping in a licensed Gilroy is a one line change in `src/app/layout.tsx`.
 
 ## Structure

@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# source art comps; only the derived WebP in public/images ships
+/images
+
 # debug
 npm-debug.log*
 yarn-debug.log*

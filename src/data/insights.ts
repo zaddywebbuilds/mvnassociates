@@ -1,3 +1,5 @@
+import { asset } from "@/lib/asset";
+
 export type Insight = {
   id: string;
   category: string;
@@ -14,9 +16,9 @@ export const featuredInsight: Insight = {
   title: "Corporate Tax in the UAE: what growing businesses need to get right",
   excerpt:
     "Registration thresholds, group structures and record keeping all shape a company's corporate tax position. Getting the foundations right early avoids costly adjustments later.",
-  image: "/images/architecture-facade.jpg",
+  image: asset("/images/insight-terrace.webp"),
   imageAlt:
-    "Curved perforated metal facade of a contemporary building against a clear sky",
+    "A person looking out across the Dubai skyline from a curved high rise terrace at dusk",
   href: "#insights",
 };
 
@@ -27,8 +29,8 @@ export const insights: Insight[] = [
     title: "Why Dubai startups need professional financial setup from day one",
     excerpt:
       "The structure chosen at incorporation shapes tax treatment, reporting duties and funding options for years afterwards.",
-    image: "/images/architecture-corner.jpg",
-    imageAlt: "Corner of a modern stone and glass building against deep blue sky",
+    image: asset("/images/insight-growth.webp"),
+    imageAlt: "Curved marble steps and planting beside a still reflecting pool",
     href: "#insights",
   },
   {
@@ -37,8 +39,9 @@ export const insights: Insight[] = [
     title: "Why CFO services are in high demand among startups and SMEs",
     excerpt:
       "Growing companies need senior financial judgement long before they can justify a permanent CFO on the payroll.",
-    image: "/images/workspace.jpg",
-    imageAlt: "Modern open workspace with floor to ceiling windows and concrete ceiling",
+    image: asset("/images/insight-interior.webp"),
+    imageAlt:
+      "A lounge interior with floor to ceiling windows framing the Burj Khalifa at sunset",
     href: "#insights",
   },
 ];

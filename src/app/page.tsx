@@ -1,3 +1,4 @@
+import ArchitecturalBand from "@/components/ArchitecturalBand";
 import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -33,6 +34,7 @@ export default function Home() {
         <TrustStrip />
         <Services />
         <StatementSection />
+        <ArchitecturalBand />
         <WhyMNV />
         <StatsStory />
         <Insights />
