@@ -23,7 +23,7 @@ export default function ContactCTA() {
         <OrbitalRing tone="dark" complete className="h-full w-full" />
       </div>
 
-      <div className="shell relative flex min-h-[86svh] flex-col items-center justify-center py-28 text-center">
+      <div className="shell relative flex min-h-[76svh] flex-col items-center justify-center py-20 text-center">
         <Reveal>
           <p className="eyebrow flex items-center justify-center gap-3">
             <span className="inline-block h-px w-7 bg-current opacity-50" aria-hidden="true" />

@@ -27,7 +27,7 @@ const STATS = [
 
 export default function StatsStory() {
   return (
-    <section className="relative isolate overflow-hidden pb-[clamp(3.5rem,7vw,6rem)] pt-[var(--section-y)]">
+    <section className="relative isolate overflow-hidden pb-[clamp(2.5rem,5vw,4.5rem)] pt-[var(--section-y)]">
       <Ambient plate="marble" className="inset-x-0 top-0 h-full" opacity={0.18} />
 
       <div className="shell relative">
@@ -45,7 +45,7 @@ export default function StatsStory() {
 
       {/* Each figure gets its own pool of light, so no moment is left sitting in
           dead space while the next one scrolls up. */}
-      <div className="relative mt-14 lg:mt-16">
+      <div className="relative mt-10 lg:mt-12">
         {STATS.map((stat, i) => {
           const flip = i % 2 === 1;
           return (
@@ -55,12 +55,12 @@ export default function StatsStory() {
                 color="rgba(141, 103, 196, 0.42)"
               />
 
-              <div className="shell relative grid min-h-[42vh] items-center gap-y-5 border-t border-[var(--rule)] py-10 lg:min-h-[46vh] lg:grid-cols-12 lg:gap-x-10 lg:py-12">
+              <div className="shell relative grid min-h-[22vh] items-center gap-y-4 border-t border-[var(--rule)] py-7 lg:min-h-[25vh] lg:grid-cols-12 lg:gap-x-10 lg:py-8">
                 <div
                   className={`lg:col-span-7 ${flip ? "lg:order-2 lg:col-start-6" : "lg:order-1"}`}
                 >
                   <p
-                    className={`numeral numeral-material select-none text-[clamp(5.5rem,16vw,13.5rem)] leading-[0.78] ${
+                    className={`numeral numeral-material select-none text-[clamp(4.5rem,13vw,11rem)] leading-[0.78] ${
                       flip ? "bleed-right text-right" : "bleed-left"
                     }`}
                   >

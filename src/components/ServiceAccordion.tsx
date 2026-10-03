@@ -24,7 +24,7 @@ export default function ServiceAccordion() {
                 aria-expanded={open}
                 aria-controls={panelId}
                 onClick={() => setOpenId(open ? null : service.id)}
-                className="flex w-full items-center gap-5 py-6 text-left"
+                className="flex w-full items-center gap-5 py-4 text-left"
               >
                 <span className="numeral text-[0.75rem] tracking-[0.16em] text-[var(--mnv-lavender-light)]">
                   {service.index}
@@ -57,7 +57,7 @@ export default function ServiceAccordion() {
                   transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
                   className="overflow-hidden"
                 >
-                  <div className="pb-7 pl-10 pr-4">
+                  <div className="pb-6 pl-10 pr-4">
                     <p className="body-text max-w-[46ch]">{service.description}</p>
                     <a
                       href={service.href}

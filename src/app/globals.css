@@ -31,7 +31,7 @@
   --accent-eyebrow: var(--mnv-lavender-light);
 
   /* Editorial rhythm */
-  --section-y: clamp(5rem, 11vw, 10.5rem);
+  --section-y: clamp(3.5rem, 7vw, 6.75rem);
   --gutter: clamp(1.25rem, 5vw, 5.5rem);
   --max-w: 1560px;
 

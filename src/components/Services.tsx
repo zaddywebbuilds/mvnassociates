@@ -47,7 +47,7 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="mt-20 lg:mt-28">
+        <div className="mt-14 lg:mt-18">
           <div className="hidden lg:block">
             <ServiceOrbital />
           </div>
@@ -55,7 +55,7 @@ export default function Services() {
           {/* All nine, in HTML. The installation carries the look; the names,
               numbering and descriptions have to stay readable and keyboard
               reachable, so they live here rather than inside the footage. */}
-          <div className="lg:mt-24">
+          <div className="lg:mt-16">
             <ServiceAccordion />
           </div>
         </div>

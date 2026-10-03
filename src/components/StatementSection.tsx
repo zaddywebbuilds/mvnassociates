@@ -6,7 +6,7 @@ import { MaskedHeading, Reveal } from "./Reveal";
 
 export default function StatementSection() {
   return (
-    <section className="grain relative isolate flex min-h-[86svh] items-center overflow-hidden py-[clamp(4rem,9vw,8rem)]">
+    <section className="grain relative isolate flex min-h-[74svh] items-center overflow-hidden py-[clamp(3rem,6vw,5.5rem)]">
       <Image
         src={asset("/images/statement-hall.webp")}
         alt=""
