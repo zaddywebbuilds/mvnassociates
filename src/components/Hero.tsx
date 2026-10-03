@@ -61,14 +61,14 @@ export default function Hero() {
         />
       </div>
 
-      <div className="shell relative z-10 flex min-h-[calc(94svh-76px)] flex-col justify-center py-12 md:py-14">
+      <div className="shell relative z-10 flex min-h-[calc(92svh-76px)] flex-col justify-center py-8 md:py-14">
         <div className="max-w-[40rem] lg:max-w-[52%]">
           <p className="eyebrow rise flex items-center gap-3" style={delay(100)}>
             <span className="inline-block h-px w-7 bg-current opacity-50" aria-hidden="true" />
             MNV Associates
           </p>
 
-          <h1 className="hero-lines mt-7 text-[clamp(2.75rem,4.9vw,4.4rem)] font-medium leading-[0.95] tracking-[-0.04em] text-[var(--fg)]">
+          <h1 className="hero-lines mt-7 text-[clamp(2.35rem,4.9vw,4.4rem)] font-medium leading-[0.95] tracking-[-0.04em] text-[var(--fg)]">
             {["Advisory built for", "businesses moving"].map((line, i) => (
               <span className="line-mask" key={line}>
                 <span style={lineDelay(200 + i * 80)}>{line}</span>
@@ -85,19 +85,19 @@ export default function Hero() {
           </h1>
 
           <p
-            className="rise mt-9 text-[0.8125rem] font-medium tracking-[0.16em] text-[var(--accent-eyebrow)]"
+            className="rise mt-6 text-[0.75rem] font-medium tracking-[0.16em] md:mt-9 md:text-[0.8125rem] text-[var(--accent-eyebrow)]"
             style={delay(460)}
           >
             TAX. FINANCE. OPERATIONS. STRATEGY.
           </p>
 
-          <p className="lede rise mt-5 max-w-[44ch]" style={delay(500)}>
+          <p className="lede rise mt-4 max-w-[44ch] text-[0.9375rem] md:mt-5 md:text-[1.0625rem]" style={delay(500)}>
             MNV Associates helps businesses across the UAE navigate complexity,
             strengthen operations and make confident decisions at every stage of
             growth.
           </p>
 
-          <div className="rise mt-10 flex flex-wrap items-center gap-4" style={delay(580)}>
+          <div className="rise mt-7 flex flex-wrap items-center gap-3 md:mt-10 md:gap-4" style={delay(580)}>
             <MagneticButton href="#contact">Talk to an advisor</MagneticButton>
             <MagneticButton href="#services" variant="ghost">
               Explore our services
@@ -107,7 +107,7 @@ export default function Hero() {
 
         {/* Architectural labels rather than a row of stats */}
         <div
-          className="rise mt-14 flex flex-wrap items-stretch gap-x-12 gap-y-6 lg:mt-20"
+          className="rise mt-9 flex flex-wrap items-stretch gap-x-7 gap-y-4 md:gap-x-12 md:gap-y-6 lg:mt-16"
           style={delay(740)}
         >
           <div className="flex items-center gap-4 pr-10">
@@ -117,10 +117,10 @@ export default function Hero() {
             </p>
           </div>
 
-          <ul className="flex flex-wrap gap-x-12 gap-y-6">
+          <ul className="flex flex-wrap gap-x-7 gap-y-4 md:gap-x-12 md:gap-y-6">
             {MARKERS.map((m) => (
               <li key={m.value} className="flex gap-4 border-l border-[var(--rule)] pl-5">
-                <span className="numeral text-[1.5rem] leading-none text-[var(--fg)]">
+                <span className="numeral text-[1.25rem] leading-none text-[var(--fg)] md:text-[1.5rem]">
                   {m.value}
                 </span>
                 <span className="whitespace-pre-line text-[0.6875rem] uppercase leading-[1.5] tracking-[0.14em] text-[var(--fg-soft)]">

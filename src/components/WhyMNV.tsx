@@ -55,7 +55,7 @@ export default function WhyMNV() {
           {/* The image runs off the edge of the screen rather than sitting inside
               the measure, which is what stops the section reading as a card. */}
           <Reveal delay={0.12} className="lg:col-span-6">
-            <figure className="bleed-right relative aspect-[4/3] w-full overflow-hidden lg:aspect-[11/13]">
+            <figure className="bleed-right relative aspect-[16/11] w-full overflow-hidden sm:aspect-[4/3] lg:aspect-[11/13]">
               <Image
                 src={asset("/images/why-mnv.webp")}
                 alt="A meeting lounge with floor to ceiling windows overlooking the Dubai skyline at sunset"
@@ -77,11 +77,11 @@ export default function WhyMNV() {
 
         {/* Architectural planes set at different heights and overlapping slightly,
             rather than four features aligned on a baseline. */}
-        <ul className="mt-16 grid sm:grid-cols-2 lg:mt-24 lg:grid-cols-4">
+        <ul className="mt-12 grid sm:mt-16 sm:grid-cols-2 lg:mt-24 lg:grid-cols-4">
           {PANELS.map((panel, i) => (
             <li key={panel.index} className={`list-none ${panel.lift}`}>
               <Reveal delay={i * 0.1} y={44 + i * 16} className="h-full">
-                <article className="group relative flex h-full flex-col border border-[var(--rule)] bg-white/[0.045] px-7 pb-8 pt-7 backdrop-blur-[2px] transition-[transform,box-shadow,border-color] duration-500 ease-out lg:-ml-px lg:min-h-[21rem] lg:px-8 lg:hover:-translate-y-2 lg:hover:border-[var(--mnv-lavender)]/60 lg:hover:bg-white/[0.07] lg:hover:shadow-[0_34px_70px_-34px_rgba(0,0,0,0.6)]">
+                <article className="group relative flex h-full flex-col border border-[var(--rule)] bg-white/[0.045] px-6 pb-7 pt-6 sm:px-7 sm:pb-8 sm:pt-7 backdrop-blur-[2px] transition-[transform,box-shadow,border-color] duration-500 ease-out lg:-ml-px lg:min-h-[21rem] lg:px-8 lg:hover:-translate-y-2 lg:hover:border-[var(--mnv-lavender)]/60 lg:hover:bg-white/[0.07] lg:hover:shadow-[0_34px_70px_-34px_rgba(0,0,0,0.6)]">
                   <span
                     aria-hidden="true"
                     className="absolute left-0 top-0 h-px w-0 bg-[var(--mnv-purple)] transition-[width] duration-700 ease-out group-hover:w-full"
@@ -89,7 +89,7 @@ export default function WhyMNV() {
                   <span className="numeral block text-[clamp(2.75rem,4vw,3.75rem)] leading-none text-white/26 transition-colors duration-500 group-hover:text-[var(--mnv-lavender)]">
                     {panel.index}
                   </span>
-                  <h3 className="mt-auto pt-10 text-[1.1875rem] font-medium leading-snug tracking-[-0.02em] text-[var(--fg)]">
+                  <h3 className="mt-auto pt-7 sm:pt-10 text-[1.1875rem] font-medium leading-snug tracking-[-0.02em] text-[var(--fg)]">
                     {panel.title}
                   </h3>
                   <p className="body-text mt-4 text-[0.9375rem]">{panel.body}</p>

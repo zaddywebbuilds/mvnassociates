@@ -41,15 +41,15 @@ export default function Footer() {
           </div>
 
           <nav aria-label="Services" className="lg:col-span-4">
-            <h2 className="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-white/45">
+            <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-white/45">
               Services
-            </h2>
+            </p>
             <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
               {services.map((s) => (
                 <li key={s.id}>
                   <a
                     href={s.href}
-                    className="text-[0.9375rem] text-white/72 transition-colors duration-300 hover:text-white"
+                    className="inline-block py-1.5 text-[0.9375rem] text-white/72 transition-colors duration-300 hover:text-white"
                   >
                     {s.title}
                   </a>
@@ -60,15 +60,15 @@ export default function Footer() {
 
           <div className="grid gap-12 sm:grid-cols-2 lg:col-span-4">
             <nav aria-label="Company">
-              <h2 className="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-white/45">
+              <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-white/45">
                 Company
-              </h2>
+              </p>
               <ul className="mt-6 flex flex-col gap-3">
                 {COMPANY.map((item) => (
                   <li key={item.label}>
                     <a
                       href={item.href}
-                      className="text-[0.9375rem] text-white/72 transition-colors duration-300 hover:text-white"
+                      className="inline-block py-1.5 text-[0.9375rem] text-white/72 transition-colors duration-300 hover:text-white"
                     >
                       {item.label}
                     </a>
@@ -78,15 +78,15 @@ export default function Footer() {
             </nav>
 
             <div>
-              <h2 className="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-white/45">
+              <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-white/45">
                 Contact
-              </h2>
+              </p>
               <address className="mt-6 not-italic text-[0.9375rem] text-white/72">
                 Dubai, United Arab Emirates
               </address>
               <a
                 href="#contact"
-                className="mt-5 inline-block text-[0.9375rem] text-white/72 transition-colors duration-300 hover:text-white"
+                className="mt-4 inline-block py-1.5 text-[0.9375rem] text-white/72 transition-colors duration-300 hover:text-white"
               >
                 LinkedIn
               </a>
@@ -102,7 +102,7 @@ export default function Footer() {
             <li>
               <a
                 href="#contact"
-                className="text-[0.8125rem] text-white/45 transition-colors duration-300 hover:text-white/80"
+                className="inline-block py-1.5 text-[0.8125rem] text-white/45 transition-colors duration-300 hover:text-white/80"
               >
                 Privacy Policy
               </a>
@@ -110,7 +110,7 @@ export default function Footer() {
             <li>
               <a
                 href="#contact"
-                className="text-[0.8125rem] text-white/45 transition-colors duration-300 hover:text-white/80"
+                className="inline-block py-1.5 text-[0.8125rem] text-white/45 transition-colors duration-300 hover:text-white/80"
               >
                 Terms
               </a>

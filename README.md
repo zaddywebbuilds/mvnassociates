@@ -59,6 +59,21 @@ Theming is semantic rather than per-component. The page is dark by default and `
 - TypeScript
 - Tailwind CSS
 - Framer Motion
+- Three.js with React Three Fiber and Drei, for the services orbital
+
+## Where the 3D is, and why
+
+There is one WebGL moment on the page: the services orbital. It is live rather
+than a recording because it answers the choice being made, turning to face the
+service under the cursor or keyboard focus. Everything else that looks
+three-dimensional is a render or a video, which is cheaper and sharper for
+anything that does not need to react.
+
+The canvas carries the sphere, the orbit planes and the lighting. Every service
+name, number and description sits in HTML layered over it, so nothing in the
+scene is the only copy of anything, and the whole section works with a keyboard.
+No GL context is created below the desktop breakpoint, where the section falls
+back to the accordion.
 
 ## Running locally
 

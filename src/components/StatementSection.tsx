@@ -38,17 +38,21 @@ export default function StatementSection() {
       <div className="shell relative w-full">
         <div className="max-w-[40rem] lg:max-w-[52%]">
           <MaskedHeading
-            lines={["Your business doesn't need", "more complexity."]}
-            className="display text-white/70"
-          />
-          <MaskedHeading
             lines={[
-              <span key="clarity">
+              <span key="l1" className="text-white/70">
+                Your business doesn&apos;t need
+              </span>,
+              <span key="l2" className="text-white/70">
+                more complexity.
+              </span>,
+              <span
+                key="l3"
+                className="block pt-[0.08em] text-[clamp(3rem,7.4vw,7rem)] leading-[0.92] text-white"
+              >
                 It needs <span className="accent">clarity.</span>
               </span>,
             ]}
-            className="display mt-3 text-[clamp(3rem,7.4vw,7rem)] text-white"
-            delay={0.14}
+            className="display"
           />
 
           <Reveal delay={0.22}>

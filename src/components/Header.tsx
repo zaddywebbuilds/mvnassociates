@@ -119,7 +119,7 @@ export default function Header() {
             onClick={() => setOpen(true)}
             aria-expanded={open}
             aria-controls="mobile-menu"
-            className="flex items-center gap-2.5 text-[0.8rem] font-medium tracking-[0.08em] text-[var(--fg)] lg:hidden"
+            className="-mr-2 flex items-center gap-2.5 px-2 py-3 text-[0.8rem] font-medium tracking-[0.08em] text-[var(--fg)] lg:hidden"
           >
             MENU
             <span className="flex flex-col gap-[5px]" aria-hidden="true">

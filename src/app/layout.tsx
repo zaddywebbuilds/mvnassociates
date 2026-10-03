@@ -46,9 +46,18 @@ export const metadata: Metadata = {
     title: "MNV Associates | Tax, Advisory & Business Solutions in Dubai",
     description:
       "Tax, accounting, CFO, compliance, HR and business advisory solutions for organisations across Dubai and the UAE.",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "A circular sculpture on a terrace overlooking the Dubai skyline at dawn",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/og.jpg"],
     title: "MNV Associates | Tax, Advisory & Business Solutions in Dubai",
     description:
       "Tax, accounting, CFO, compliance, HR and business advisory solutions for organisations across Dubai and the UAE.",
