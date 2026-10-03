@@ -233,6 +233,18 @@ body {
   animation-delay: var(--delay, 0ms);
 }
 
+/* Opacity only, for elements whose transform is already doing layout work. */
+@keyframes mnv-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.fade-in {
+  animation: mnv-fade 1.5s var(--ease-out-expo) both;
+  animation-delay: var(--delay, 0ms);
+}
+
 /* Masked line reveal for editorial headlines */
 .line-mask {
   display: block;
@@ -248,6 +260,25 @@ body {
   transform: translateY(110%);
   transition: transform 1.05s var(--ease-out-expo);
   transition-delay: var(--line-delay, 0ms);
+}
+
+/*
+ * Above-the-fold lines animate on load rather than on an observer, and do it in
+ * CSS: the headline is the most important text on the page and must not depend
+ * on a JavaScript animation loop to become visible.
+ */
+@keyframes mnv-line-rise {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.hero-lines .line-mask > span {
+  animation: mnv-line-rise 1.15s var(--ease-out-expo) both;
+  animation-delay: var(--d, 0ms);
 }
 
 .reveal-lines.is-revealed .line-mask > span {
