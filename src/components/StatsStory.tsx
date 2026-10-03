@@ -27,11 +27,10 @@ const STATS = [
 
 export default function StatsStory() {
   return (
-    <section className="relative isolate overflow-hidden pb-[clamp(4rem,9vw,8rem)] pt-[var(--section-y)]">
-      <Ambient plate="marble" className="inset-x-0 bottom-0 h-[72%]" opacity={0.42} />
-      <LightSpill className="left-[-8%] bottom-[6%] h-[52%] w-[52%]" color="rgba(120,86,172,0.32)" />
-      <LightSpill className="right-[-10%] top-[8%] h-[58%] w-[56%]" color="rgba(138,100,190,0.3)" />
-      <div className="shell">
+    <section className="relative isolate overflow-hidden pb-[clamp(3.5rem,7vw,6rem)] pt-[var(--section-y)]">
+      <Ambient plate="marble" className="inset-x-0 top-0 h-full" opacity={0.18} />
+
+      <div className="shell relative">
         <SectionHeading
           eyebrow="By the numbers"
           lines={[
@@ -44,57 +43,58 @@ export default function StatsStory() {
         />
       </div>
 
-      {/* Four moments rather than four metrics. The numeral holds while its own
-          block scrolls past, so each one gets the viewport to itself. */}
-      <div className="mt-20 lg:mt-28">
+      {/* Each figure gets its own pool of light, so no moment is left sitting in
+          dead space while the next one scrolls up. */}
+      <div className="relative mt-14 lg:mt-16">
         {STATS.map((stat, i) => {
           const flip = i % 2 === 1;
           return (
-            <div
-              key={stat.label}
-              className="shell grid min-h-[58vh] items-center gap-y-6 lg:min-h-[72vh] lg:grid-cols-12 lg:gap-x-10"
-            >
-              <div
-                className={`lg:col-span-7 ${
-                  flip ? "lg:order-2 lg:col-start-6" : "lg:order-1"
-                }`}
-              >
-                <div className="lg:sticky lg:top-[26vh]">
+            <div key={stat.label} className="relative">
+              <LightSpill
+                className={`top-[-10%] h-[120%] w-[62%] ${flip ? "right-[-14%]" : "left-[-14%]"}`}
+                color="rgba(141, 103, 196, 0.42)"
+              />
+
+              <div className="shell relative grid min-h-[42vh] items-center gap-y-5 border-t border-[var(--rule)] py-10 lg:min-h-[46vh] lg:grid-cols-12 lg:gap-x-10 lg:py-12">
+                <div
+                  className={`lg:col-span-7 ${flip ? "lg:order-2 lg:col-start-6" : "lg:order-1"}`}
+                >
                   <p
-                    className={`numeral select-none text-[clamp(5.5rem,17vw,14.5rem)] leading-[0.76] text-white/[0.17] ${
+                    className={`numeral numeral-material select-none text-[clamp(5.5rem,16vw,13.5rem)] leading-[0.78] ${
                       flip ? "bleed-right text-right" : "bleed-left"
                     }`}
                   >
                     {stat.value}
                   </p>
                 </div>
-              </div>
 
-              <Reveal
-                delay={0.08}
-                className={`lg:col-span-5 ${
-                  flip ? "lg:order-1 lg:col-start-1 lg:row-start-1" : "lg:order-2"
-                }`}
-              >
-                <div className={flip ? "lg:text-right" : undefined}>
-                  <span
-                    aria-hidden="true"
-                    className={`mb-6 block h-px w-14 bg-[var(--mnv-lavender)] ${
-                      flip ? "lg:ml-auto" : ""
-                    }`}
-                  />
-                  <h3 className="text-[clamp(1.5rem,2.4vw,2.2rem)] font-medium leading-[1.08] tracking-[-0.025em] text-[var(--fg)]">
-                    {stat.label}
-                  </h3>
-                  <p
-                    className={`body-text mt-4 max-w-[36ch] text-[0.9375rem] ${
-                      flip ? "lg:ml-auto" : ""
-                    }`}
-                  >
-                    {stat.note}
-                  </p>
-                </div>
-              </Reveal>
+                <Reveal
+                  delay={0.06}
+                  className={`lg:col-span-5 ${
+                    flip ? "lg:order-1 lg:col-start-1 lg:row-start-1" : "lg:order-2"
+                  }`}
+                >
+                  <div className={flip ? "lg:text-right" : undefined}>
+                    <p
+                      className={`numeral mb-5 text-[0.75rem] tracking-[0.2em] text-[var(--mnv-lavender)] ${
+                        flip ? "lg:text-right" : ""
+                      }`}
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </p>
+                    <h3 className="text-[clamp(1.5rem,2.4vw,2.2rem)] font-medium leading-[1.08] tracking-[-0.025em] text-[var(--fg)]">
+                      {stat.label}
+                    </h3>
+                    <p
+                      className={`body-text mt-4 max-w-[34ch] text-[0.9375rem] ${
+                        flip ? "lg:ml-auto" : ""
+                      }`}
+                    >
+                      {stat.note}
+                    </p>
+                  </div>
+                </Reveal>
+              </div>
             </div>
           );
         })}

@@ -199,6 +199,24 @@ body {
   color: var(--accent-eyebrow);
 }
 
+/*
+ * Oversized numerals are a surface, not translucent text. A flat low-opacity
+ * white reads as a faded placeholder; a gradient from lit edge to deep purple
+ * reads as polished metal catching the room's light.
+ */
+.numeral-material {
+  background-image: linear-gradient(
+    168deg,
+    rgba(240, 233, 250, 0.95) 0%,
+    rgba(198, 178, 228, 0.72) 30%,
+    rgba(136, 103, 184, 0.42) 62%,
+    rgba(83, 50, 120, 0.22) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .numeral {
   font-variant-numeric: tabular-nums lining-nums;
   letter-spacing: -0.05em;
