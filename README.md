@@ -39,6 +39,20 @@ Sections alternate deliberately between high impact and calm so the page breathe
 | Insights | Calm, editorial |
 | Contact | Impact |
 
+## The environment system
+
+The page is not a stack of coloured sections. It is one dark, lit environment that the content travels through, with two deliberate light breaks for rhythm and for comfortable long-form reading.
+
+The lighting comes from the brand renders themselves. Crops of the reflective floor and light-pool regions are blurred, darkened on a linear ramp so highlights survive, and composited with `screen` over the dark base. Their shadows contribute nothing and only the highlights carry through, so a plate reads as light falling into a room rather than as a photograph sitting behind the text. Every plate is feathered; a plate with a hard edge reads as a pasted rectangle and undoes the point.
+
+Three pieces make up the system, in `src/components/env/Ambient.tsx`:
+
+- `Ambient` places a pool of light from one of three plates
+- `LightSpill` bleeds a soft radial across a section boundary so zones run into each other
+- `EdgeLight` catches a hairline along a section lip, the way light catches stone
+
+Theming is semantic rather than per-component. The page is dark by default and `.on-light` flips `--fg`, `--fg-soft`, `--rule` and `--accent-eyebrow` for the two breaks, so no component needs to know which ground it is sitting on. Accent colour goes through `--accent-eyebrow`, which resolves to lavender on dark and MNV purple on light, because the brand purple is too dark to read as text on the dark base.
+
 ## Tech
 
 - Next.js (App Router) and React

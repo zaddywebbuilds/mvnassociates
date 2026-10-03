@@ -30,14 +30,14 @@ function Wordmark({ onDark = false }: { onDark?: boolean }) {
       <span className="flex flex-col leading-none">
         <span
           className={`text-[0.95rem] font-semibold tracking-[0.14em] ${
-            onDark ? "text-white" : "text-[var(--mnv-ink)]"
+            onDark ? "text-white" : "text-[var(--fg)]"
           }`}
         >
           MNV
         </span>
         <span
           className={`mt-[3px] text-[0.5rem] font-medium tracking-[0.28em] ${
-            onDark ? "text-white/55" : "text-[var(--mnv-muted)]"
+            onDark ? "text-white/55" : "text-[var(--fg-soft)]"
           }`}
         >
           ASSOCIATES
@@ -86,7 +86,7 @@ export default function Header() {
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ${
           scrolled
-            ? "border-b border-[var(--mnv-border)] bg-white/88 backdrop-blur-md"
+            ? "border-b border-white/10 bg-[rgba(18,12,26,0.74)] backdrop-blur-xl"
             : "border-b border-transparent bg-transparent"
         }`}
       >
@@ -100,10 +100,10 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="group relative text-[0.9rem] font-medium text-[var(--mnv-ink)] transition-colors duration-300 hover:text-[var(--mnv-purple)]"
+                className="group relative text-[0.9rem] font-medium text-[var(--fg)] transition-colors duration-300 hover:text-[var(--accent-eyebrow)]"
               >
                 {item.label}
-                <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-[var(--mnv-purple)] transition-[width] duration-400 ease-out group-hover:w-full" />
+                <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-[var(--accent-eyebrow)] transition-[width] duration-400 ease-out group-hover:w-full" />
               </a>
             ))}
           </nav>
@@ -119,7 +119,7 @@ export default function Header() {
             onClick={() => setOpen(true)}
             aria-expanded={open}
             aria-controls="mobile-menu"
-            className="flex items-center gap-2.5 text-[0.8rem] font-medium tracking-[0.08em] text-[var(--mnv-ink)] lg:hidden"
+            className="flex items-center gap-2.5 text-[0.8rem] font-medium tracking-[0.08em] text-[var(--fg)] lg:hidden"
           >
             MENU
             <span className="flex flex-col gap-[5px]" aria-hidden="true">
@@ -141,7 +141,11 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[70] bg-white lg:hidden"
+            className="fixed inset-0 z-[70] lg:hidden"
+            style={{
+              background:
+                "radial-gradient(120% 80% at 70% 10%, #2e1c48 0%, #17101f 54%, #0d0914 100%)",
+            }}
           >
             <div className="shell flex h-[76px] items-center justify-between">
               <Wordmark />
@@ -149,7 +153,7 @@ export default function Header() {
                 ref={closeRef}
                 type="button"
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2.5 text-[0.8rem] font-medium tracking-[0.08em] text-[var(--mnv-ink)]"
+                className="flex items-center gap-2.5 text-[0.8rem] font-medium tracking-[0.08em] text-[var(--fg)]"
               >
                 CLOSE
                 <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
@@ -172,7 +176,7 @@ export default function Header() {
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.06 + i * 0.05, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="border-b border-[var(--mnv-border)] py-6 text-[2rem] font-medium tracking-[-0.025em] text-[var(--mnv-ink)]"
+                  className="border-b border-[var(--rule)] py-6 text-[2rem] font-medium tracking-[-0.025em] text-[var(--fg)]"
                 >
                   {item.label}
                 </motion.a>

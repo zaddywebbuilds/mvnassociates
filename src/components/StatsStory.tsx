@@ -1,3 +1,4 @@
+import { Ambient, LightSpill } from "./env/Ambient";
 import SectionHeading from "./SectionHeading";
 import { Reveal } from "./Reveal";
 
@@ -26,7 +27,10 @@ const STATS = [
 
 export default function StatsStory() {
   return (
-    <section className="relative overflow-hidden bg-[var(--mnv-pale)] pb-[clamp(4rem,9vw,8rem)] pt-[var(--section-y)]">
+    <section className="relative isolate overflow-hidden pb-[clamp(4rem,9vw,8rem)] pt-[var(--section-y)]">
+      <Ambient plate="marble" className="inset-x-0 bottom-0 h-[72%]" opacity={0.42} />
+      <LightSpill className="left-[-8%] bottom-[6%] h-[52%] w-[52%]" color="rgba(120,86,172,0.32)" />
+      <LightSpill className="right-[-10%] top-[8%] h-[58%] w-[56%]" color="rgba(138,100,190,0.3)" />
       <div className="shell">
         <SectionHeading
           eyebrow="By the numbers"
@@ -57,7 +61,7 @@ export default function StatsStory() {
               >
                 <div className="lg:sticky lg:top-[26vh]">
                   <p
-                    className={`numeral select-none text-[clamp(5.5rem,17vw,14.5rem)] leading-[0.76] text-[#cfc2e2] ${
+                    className={`numeral select-none text-[clamp(5.5rem,17vw,14.5rem)] leading-[0.76] text-white/[0.17] ${
                       flip ? "bleed-right text-right" : "bleed-left"
                     }`}
                   >
@@ -79,7 +83,7 @@ export default function StatsStory() {
                       flip ? "lg:ml-auto" : ""
                     }`}
                   />
-                  <h3 className="text-[clamp(1.5rem,2.4vw,2.2rem)] font-medium leading-[1.08] tracking-[-0.025em] text-[var(--mnv-ink)]">
+                  <h3 className="text-[clamp(1.5rem,2.4vw,2.2rem)] font-medium leading-[1.08] tracking-[-0.025em] text-[var(--fg)]">
                     {stat.label}
                   </h3>
                   <p

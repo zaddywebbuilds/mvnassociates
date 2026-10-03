@@ -13,8 +13,22 @@
   --mnv-border: #e9e2ed;
   --mnv-white: #ffffff;
 
-  --background: var(--mnv-white);
-  --foreground: var(--mnv-ink);
+  --mnv-base: #140e1d;
+  --mnv-base-deep: #0d0914;
+
+  --background: var(--mnv-base);
+  --foreground: #ffffff;
+
+  /*
+   * Semantic text and rule colours. The page is a dark lit environment by
+   * default; .on-light flips these for the two editorial breaks rather than
+   * every component having to know which ground it is sitting on.
+   */
+  --fg: #ffffff;
+  --fg-soft: rgba(255, 255, 255, 0.66);
+  --fg-dim: rgba(255, 255, 255, 0.44);
+  --rule: rgba(255, 255, 255, 0.13);
+  --accent-eyebrow: var(--mnv-lavender-light);
 
   /* Editorial rhythm */
   --section-y: clamp(5rem, 11vw, 10.5rem);
@@ -43,6 +57,16 @@
   --font-serif: var(--font-serif), Georgia, serif;
 }
 
+.on-light {
+  --fg: var(--mnv-ink);
+  --fg-soft: var(--mnv-muted);
+  --fg-dim: #8c8694;
+  --rule: var(--mnv-border);
+  --accent-eyebrow: var(--mnv-purple);
+
+  color: var(--mnv-ink);
+}
+
 * {
   min-width: 0;
 }
@@ -53,7 +77,12 @@ html {
 }
 
 body {
-  background: var(--background);
+  background-color: var(--mnv-base);
+  /* Fixed, so the lighting stays put while the content travels through it. */
+  background-image:
+    radial-gradient(118% 72% at 76% 4%, rgba(118, 78, 172, 0.4) 0%, rgba(0, 0, 0, 0) 58%),
+    radial-gradient(96% 64% at 10% 96%, rgba(83, 50, 120, 0.38) 0%, rgba(0, 0, 0, 0) 62%);
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-manrope), "Inter", Arial, sans-serif;
   font-synthesis-weight: none;
@@ -67,13 +96,13 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--mnv-purple);
+  outline: 2px solid var(--mnv-lavender-light);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
-.on-dark :focus-visible {
-  outline-color: var(--mnv-lavender-light);
+.on-light :focus-visible {
+  outline-color: var(--mnv-purple);
 }
 
 /* ---------- Layout ---------- */
@@ -152,14 +181,14 @@ body {
 .lede {
   font-size: clamp(1.0625rem, 1.25vw, 1.25rem);
   line-height: 1.6;
-  color: var(--mnv-muted);
+  color: var(--fg-soft);
   font-weight: 400;
 }
 
 .body-text {
   font-size: 1.0625rem;
   line-height: 1.68;
-  color: var(--mnv-muted);
+  color: var(--fg-soft);
 }
 
 .eyebrow {
@@ -167,16 +196,7 @@ body {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--mnv-purple);
-}
-
-.on-dark .eyebrow {
-  color: var(--mnv-lavender-light);
-}
-
-.on-dark .lede,
-.on-dark .body-text {
-  color: rgba(255, 255, 255, 0.64);
+  color: var(--accent-eyebrow);
 }
 
 .numeral {
@@ -196,12 +216,8 @@ body {
 
 .hairline {
   height: 1px;
-  background: var(--mnv-border);
+  background: var(--rule);
   border: 0;
-}
-
-.on-dark .hairline {
-  background: rgba(255, 255, 255, 0.14);
 }
 
 /* Very fine film grain. Reads as print, kills banding on gradients */

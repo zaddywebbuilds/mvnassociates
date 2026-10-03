@@ -13,7 +13,7 @@ const STYLES: Record<Variant, string> = {
   onDark:
     "bg-white text-[var(--mnv-ink)] hover:bg-[var(--mnv-lavender-light)] px-7 py-4",
   ghost:
-    "text-[var(--mnv-ink)] hover:text-[var(--mnv-purple)] border border-[var(--mnv-border)] hover:border-[var(--mnv-lavender)] px-7 py-4",
+    "text-[var(--fg)] hover:text-[var(--accent-eyebrow)] border border-[var(--rule)] hover:border-[var(--mnv-lavender)] px-7 py-4",
   ghostOnDark:
     "text-white/85 hover:text-white border border-white/20 hover:border-white/45 px-7 py-4",
 };

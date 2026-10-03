@@ -1,3 +1,4 @@
+import { Ambient, EdgeLight, LightSpill } from "./env/Ambient";
 import SectionHeading from "./SectionHeading";
 import ServiceAccordion from "./ServiceAccordion";
 import ServiceOrbital from "./ServiceOrbital";
@@ -6,12 +7,15 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="on-dark grain section-y relative isolate overflow-hidden"
+      className="grain section-y relative isolate overflow-hidden"
       style={{
         background:
-          "radial-gradient(118% 86% at 68% 44%, #412763 0%, #2b1844 44%, #1a1226 100%)",
+          "radial-gradient(118% 86% at 68% 44%, #3a2358 0%, #241739 46%, #150f21 100%)",
       }}
     >
+      <EdgeLight className="top-0" />
+      <Ambient plate="glow" className="inset-x-0 top-0 h-[46%]" opacity={0.34} />
+      <LightSpill className="right-[-14%] top-[12%] h-[70%] w-[64%]" color="rgba(150,112,201,0.4)" />
       {/* The ring carried through as an oversized outline, cropped by the section. */}
       <svg
         aria-hidden="true"

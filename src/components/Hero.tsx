@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { Ambient, EdgeLight, LightSpill } from "./env/Ambient";
 import HeroVideo from "./HeroVideo";
 import MagneticButton from "./MagneticButton";
 
@@ -19,15 +20,18 @@ const FEATHER = [
 
 export default function Hero() {
   return (
-    <section className="grain relative isolate overflow-hidden bg-white pt-[76px]">
+    <section className="grain relative isolate overflow-hidden pt-[76px]">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(112% 90% at 72% 46%, #f3edfa 0%, #faf8fd 46%, #ffffff 76%)",
+            "radial-gradient(104% 86% at 70% 44%, rgba(120, 82, 172, 0.34) 0%, rgba(26, 17, 40, 0) 62%)",
         }}
       />
+
+      <Ambient plate="terrace" className="inset-x-0 bottom-0 -z-[9] h-[58%]" opacity={0.46} />
+      <LightSpill className="-z-[8] left-[-12%] top-[18%] h-[62%] w-[62%]" />
 
       {/* The installation, running off the right edge of the screen. Its left
           edge is feathered so it reads as part of the page rather than as a
@@ -52,7 +56,7 @@ export default function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to right, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 34%)",
+              "linear-gradient(to right, rgba(20,14,29,0.72) 0%, rgba(20,14,29,0) 38%)",
           }}
         />
       </div>
@@ -64,7 +68,7 @@ export default function Hero() {
             MNV Associates
           </p>
 
-          <h1 className="hero-lines mt-7 text-[clamp(2.75rem,4.9vw,4.4rem)] font-medium leading-[0.95] tracking-[-0.04em] text-[var(--mnv-ink)]">
+          <h1 className="hero-lines mt-7 text-[clamp(2.75rem,4.9vw,4.4rem)] font-medium leading-[0.95] tracking-[-0.04em] text-[var(--fg)]">
             {["Advisory built for", "businesses moving"].map((line, i) => (
               <span className="line-mask" key={line}>
                 <span style={lineDelay(200 + i * 80)}>{line}</span>
@@ -73,15 +77,15 @@ export default function Hero() {
             <span className="line-mask">
               <span
                 style={lineDelay(360)}
-                className="accent pt-[0.06em] text-[1.78em] leading-[0.88] text-[var(--mnv-ink)]"
+                className="accent pt-[0.06em] text-[1.78em] leading-[0.88] text-[var(--fg)]"
               >
-                forward<span className="text-[var(--mnv-purple)]">.</span>
+                forward<span className="text-[var(--accent-eyebrow)]">.</span>
               </span>
             </span>
           </h1>
 
           <p
-            className="rise mt-9 text-[0.8125rem] font-medium tracking-[0.16em] text-[var(--mnv-purple)]"
+            className="rise mt-9 text-[0.8125rem] font-medium tracking-[0.16em] text-[var(--accent-eyebrow)]"
             style={delay(460)}
           >
             TAX. FINANCE. OPERATIONS. STRATEGY.
@@ -115,11 +119,11 @@ export default function Hero() {
 
           <ul className="flex flex-wrap gap-x-12 gap-y-6">
             {MARKERS.map((m) => (
-              <li key={m.value} className="flex gap-4 border-l border-[var(--mnv-border)] pl-5">
-                <span className="numeral text-[1.5rem] leading-none text-[var(--mnv-ink)]">
+              <li key={m.value} className="flex gap-4 border-l border-[var(--rule)] pl-5">
+                <span className="numeral text-[1.5rem] leading-none text-[var(--fg)]">
                   {m.value}
                 </span>
-                <span className="whitespace-pre-line text-[0.6875rem] uppercase leading-[1.5] tracking-[0.14em] text-[var(--mnv-muted)]">
+                <span className="whitespace-pre-line text-[0.6875rem] uppercase leading-[1.5] tracking-[0.14em] text-[var(--fg-soft)]">
                   {m.label}
                 </span>
               </li>
@@ -127,6 +131,8 @@ export default function Hero() {
           </ul>
         </div>
       </div>
+
+      <EdgeLight className="bottom-0" />
     </section>
   );
 }

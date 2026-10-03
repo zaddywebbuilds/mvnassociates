@@ -9,7 +9,7 @@ const COMPANY = [
 
 export default function Footer() {
   return (
-    <footer className="on-dark bg-[var(--mnv-ink)] pb-10 pt-[clamp(3.5rem,7vw,6rem)] text-white">
+    <footer className="relative isolate bg-[var(--mnv-base-deep)] pb-10 pt-[clamp(3.5rem,7vw,6rem)] text-white">
       <div className="shell">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-4">

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { asset } from "@/lib/asset";
+import { Ambient, LightSpill } from "./env/Ambient";
 import SectionHeading from "./SectionHeading";
 import { Reveal } from "./Reveal";
 
@@ -32,7 +33,9 @@ const PANELS = [
 
 export default function WhyMNV() {
   return (
-    <section id="why-mnv" className="section-y overflow-hidden bg-white">
+    <section id="why-mnv" className="section-y relative isolate overflow-hidden">
+      <Ambient plate="marble" className="inset-x-0 top-[12%] h-[52%]" opacity={0.3} />
+      <LightSpill className="left-[-16%] top-[30%] h-[66%] w-[58%]" color="rgba(126,92,174,0.34)" />
       <div className="shell">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-6 lg:pt-10">
@@ -78,15 +81,15 @@ export default function WhyMNV() {
           {PANELS.map((panel, i) => (
             <li key={panel.index} className={`list-none ${panel.lift}`}>
               <Reveal delay={i * 0.1} y={44 + i * 16} className="h-full">
-                <article className="group relative flex h-full flex-col border border-[var(--mnv-border)] bg-white px-7 pb-10 pt-8 transition-[transform,box-shadow,border-color] duration-500 ease-out lg:-ml-px lg:min-h-[26rem] lg:px-8 lg:hover:-translate-y-2 lg:hover:border-[var(--mnv-lavender)] lg:hover:shadow-[0_34px_70px_-34px_rgba(53,26,82,0.4)]">
+                <article className="group relative flex h-full flex-col border border-[var(--rule)] bg-white/[0.045] px-7 pb-10 pt-8 backdrop-blur-[2px] transition-[transform,box-shadow,border-color] duration-500 ease-out lg:-ml-px lg:min-h-[26rem] lg:px-8 lg:hover:-translate-y-2 lg:hover:border-[var(--mnv-lavender)]/60 lg:hover:bg-white/[0.07] lg:hover:shadow-[0_34px_70px_-34px_rgba(0,0,0,0.6)]">
                   <span
                     aria-hidden="true"
                     className="absolute left-0 top-0 h-px w-0 bg-[var(--mnv-purple)] transition-[width] duration-700 ease-out group-hover:w-full"
                   />
-                  <span className="numeral block text-[clamp(2.75rem,4vw,3.75rem)] leading-none text-[#e0d6ec] transition-colors duration-500 group-hover:text-[var(--mnv-lavender)]">
+                  <span className="numeral block text-[clamp(2.75rem,4vw,3.75rem)] leading-none text-white/26 transition-colors duration-500 group-hover:text-[var(--mnv-lavender)]">
                     {panel.index}
                   </span>
-                  <h3 className="mt-auto pt-14 text-[1.1875rem] font-medium leading-snug tracking-[-0.02em] text-[var(--mnv-ink)]">
+                  <h3 className="mt-auto pt-14 text-[1.1875rem] font-medium leading-snug tracking-[-0.02em] text-[var(--fg)]">
                     {panel.title}
                   </h3>
                   <p className="body-text mt-4 text-[0.9375rem]">{panel.body}</p>

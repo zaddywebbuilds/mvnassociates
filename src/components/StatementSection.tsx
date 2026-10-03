@@ -3,7 +3,7 @@ import { MaskedHeading, Reveal } from "./Reveal";
 
 export default function StatementSection() {
   return (
-    <section className="on-dark grain relative isolate overflow-hidden bg-[var(--mnv-purple)] section-y">
+    <section className="grain relative isolate overflow-hidden bg-[var(--mnv-purple)] section-y">
       {/* A single enormous ring, mostly outside the frame. Restraint is the point. */}
       <svg
         aria-hidden="true"

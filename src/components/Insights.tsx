@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { featuredInsight, insights } from "@/data/insights";
+import { EdgeLight } from "./env/Ambient";
 import SectionHeading from "./SectionHeading";
 import { Reveal } from "./Reveal";
 
@@ -26,7 +27,15 @@ function Arrow({ className = "" }: { className?: string }) {
 
 export default function Insights() {
   return (
-    <section id="insights" className="section-y bg-white">
+    <section
+      id="insights"
+      className="on-light section-y relative isolate"
+      style={{
+        background:
+          "linear-gradient(184deg, #f7f4fa 0%, #ffffff 42%, #f3eef8 100%)",
+      }}
+    >
+      <EdgeLight className="top-0" />
       <div className="shell">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-6">
@@ -60,11 +69,11 @@ export default function Insights() {
                 />
               </figure>
               <p className="eyebrow mt-7">{featuredInsight.category}</p>
-              <h3 className="headline mt-4 max-w-[20ch] text-[clamp(1.5rem,2.4vw,2.1rem)] text-[var(--mnv-ink)] transition-colors duration-300 group-hover:text-[var(--mnv-purple)]">
+              <h3 className="headline mt-4 max-w-[20ch] text-[clamp(1.5rem,2.4vw,2.1rem)] text-[var(--fg)] transition-colors duration-300 group-hover:text-[var(--accent-eyebrow)]">
                 {featuredInsight.title}
               </h3>
               <p className="body-text mt-4 max-w-[54ch]">{featuredInsight.excerpt}</p>
-              <span className="mt-6 inline-flex items-center gap-2.5 text-[0.9375rem] font-medium text-[var(--mnv-purple)]">
+              <span className="mt-6 inline-flex items-center gap-2.5 text-[0.9375rem] font-medium text-[var(--accent-eyebrow)]">
                 Read the article
                 <Arrow />
               </span>
@@ -77,7 +86,7 @@ export default function Insights() {
               <Reveal key={item.id} delay={0.1 + i * 0.08}>
                 <a
                   href={item.href}
-                  className={`group flex gap-6 border-[var(--mnv-border)] py-8 first:pt-0 ${
+                  className={`group flex gap-6 border-[var(--rule)] py-8 first:pt-0 ${
                     i === 0 ? "border-b" : ""
                   }`}
                 >
@@ -92,13 +101,13 @@ export default function Insights() {
                   </figure>
                   <div className="flex-1">
                     <p className="eyebrow">{item.category}</p>
-                    <h3 className="mt-3 text-[1.0625rem] font-medium leading-snug tracking-[-0.015em] text-[var(--mnv-ink)] transition-colors duration-300 group-hover:text-[var(--mnv-purple)] sm:text-[1.1875rem]">
+                    <h3 className="mt-3 text-[1.0625rem] font-medium leading-snug tracking-[-0.015em] text-[var(--fg)] transition-colors duration-300 group-hover:text-[var(--accent-eyebrow)] sm:text-[1.1875rem]">
                       {item.title}
                     </h3>
                     <p className="body-text mt-3 hidden text-[0.9375rem] sm:block">
                       {item.excerpt}
                     </p>
-                    <span className="mt-4 inline-flex items-center gap-2 text-[0.875rem] font-medium text-[var(--mnv-purple)]">
+                    <span className="mt-4 inline-flex items-center gap-2 text-[0.875rem] font-medium text-[var(--accent-eyebrow)]">
                       Read
                       <Arrow />
                     </span>
@@ -110,7 +119,7 @@ export default function Insights() {
             <Reveal delay={0.3}>
               <a
                 href="#insights"
-                className="group mt-4 inline-flex items-center gap-2.5 border-t border-[var(--mnv-border)] pt-8 text-[0.9375rem] font-medium text-[var(--mnv-ink)] transition-colors duration-300 hover:text-[var(--mnv-purple)]"
+                className="group mt-4 inline-flex items-center gap-2.5 border-t border-[var(--rule)] pt-8 text-[0.9375rem] font-medium text-[var(--fg)] transition-colors duration-300 hover:text-[var(--accent-eyebrow)]"
               >
                 View all insights
                 <Arrow />

@@ -117,7 +117,7 @@ function Ring({ tone, complete, quality, animate }: Omit<SceneProps, "active">) 
 
         {/* Purple band crossing the primary plane. Rings at different attitudes are
             what make this read as a built object rather than a drawn circle. */}
-        <mesh rotation={[0.74, 0.14, 0.26]}>
+        <mesh rotation={complete ? [0.3, 0.08, 0.18] : [0.74, 0.14, 0.26]}>
           <torusGeometry
             args={[2.26, 0.052, 18, Math.round(quality.segments * 0.8), complete ? Math.PI * 2 : Math.PI * 1.45]}
           />
@@ -129,7 +129,8 @@ function Ring({ tone, complete, quality, animate }: Omit<SceneProps, "active">) 
           />
         </mesh>
 
-        {/* Third plane, shallower still */}
+        {/* Third plane, shallower still. Open state only. */}
+        {!complete && (
         <mesh rotation={[-0.34, 0.52, 0.15]}>
           <torusGeometry args={[1.92, 0.028, 14, 160]} />
           <meshPhysicalMaterial
@@ -142,8 +143,10 @@ function Ring({ tone, complete, quality, animate }: Omit<SceneProps, "active">) 
             opacity={c.glassOpacity * 0.6}
           />
         </mesh>
+        )}
 
         {/* Inner core ring */}
+        {!complete && (
         <mesh rotation={[0.3, -0.4, 0]}>
           <torusGeometry args={[1.32, 0.03, 14, 150]} />
           <meshStandardMaterial
@@ -153,6 +156,7 @@ function Ring({ tone, complete, quality, animate }: Omit<SceneProps, "active">) 
             envMapIntensity={1.4}
           />
         </mesh>
+        )}
 
         {/* Architectural hairline, drawn like a drafting circle */}
         <mesh position={[0, 0, -0.05]}>

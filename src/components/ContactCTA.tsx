@@ -6,7 +6,7 @@ export default function ContactCTA() {
   return (
     <section
       id="contact"
-      className="on-dark grain relative isolate overflow-hidden"
+      className="grain relative isolate overflow-hidden"
       style={{
         background:
           "radial-gradient(118% 86% at 50% 72%, #3a2057 0%, #211334 44%, #120d1a 100%)",
@@ -16,9 +16,9 @@ export default function ContactCTA() {
           it sits outside the frame, so the section reads as a fragment of
           something much larger. */}
       <div
-        className="pointer-events-none absolute left-1/2 top-[78%] -z-10 h-[170vw] w-[170vw] -translate-x-1/2 -translate-y-1/2 opacity-90
-          md:h-[128vw] md:w-[128vw]
-          lg:top-[76%] lg:h-[104vw] lg:w-[104vw] lg:max-h-[1500px] lg:max-w-[1500px]"
+        className="pointer-events-none absolute left-1/2 top-[76%] -z-10 h-[150vw] w-[150vw] -translate-x-1/2 -translate-y-1/2 opacity-90
+          md:h-[112vw] md:w-[112vw]
+          lg:top-[72%] lg:h-[84vw] lg:w-[84vw] lg:max-h-[1150px] lg:max-w-[1150px]"
       >
         <OrbitalRing tone="dark" complete className="h-full w-full" />
       </div>
