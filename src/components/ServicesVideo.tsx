@@ -2,29 +2,39 @@
 
 import { useEffect, useRef } from "react";
 import { asset } from "@/lib/asset";
-import { usePrefersReducedMotion } from "@/hooks/useMotionPreferences";
+import {
+  useInViewport,
+  usePrefersReducedMotion,
+} from "@/hooks/useMotionPreferences";
 
 /**
  * The orbital installation, presented as a surface: a framed panel with its own
  * edge light, rather than footage washed into the background.
+ *
+ * Nothing is fetched until the section is close to the viewport. This clip sits
+ * well below the fold, so loading it eagerly spent ~630KB of the page's budget
+ * before a visitor had any chance of seeing it.
  */
 export default function ServicesVideo() {
+  const hostRef = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLVideoElement>(null);
+  const near = useInViewport(hostRef, "500px");
   const reduceMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     const video = ref.current;
-    if (!video) return;
+    if (!video || !near) return;
+
     if (reduceMotion) {
       video.pause();
-      video.currentTime = 0;
-    } else {
-      void video.play().catch(() => {});
+      return;
     }
-  }, [reduceMotion]);
+    video.load();
+    void video.play().catch(() => {});
+  }, [near, reduceMotion]);
 
   return (
-    <figure className="relative">
+    <figure ref={hostRef} className="relative">
       <div
         className="relative overflow-hidden rounded-sm border border-white/12"
         style={{
@@ -36,19 +46,23 @@ export default function ServicesVideo() {
           ref={ref}
           className="block aspect-video w-full object-cover"
           poster={asset("/video/services-orbital-poster.webp")}
-          autoPlay={!reduceMotion}
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           aria-hidden="true"
           tabIndex={-1}
         >
-          <source src={asset("/video/services-orbital.webm")} type="video/webm" />
-          <source src={asset("/video/services-orbital.mp4")} type="video/mp4" />
+          {/* Sources are withheld until the section is near, so the browser has
+              nothing to fetch before then. The poster stands in meanwhile. */}
+          {near && !reduceMotion ? (
+            <>
+              <source src={asset("/video/services-orbital.webm")} type="video/webm" />
+              <source src={asset("/video/services-orbital.mp4")} type="video/mp4" />
+            </>
+          ) : null}
         </video>
 
-        {/* Light catching the top lip of the panel */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-0 h-px"
