@@ -1,5 +1,5 @@
 import SectionHeading from "./SectionHeading";
-import { MaskedHeading, Reveal } from "./Reveal";
+import { Reveal } from "./Reveal";
 
 const STATS = [
   {
@@ -26,38 +26,65 @@ const STATS = [
 
 export default function StatsStory() {
   return (
-    <section className="section-y bg-[var(--mnv-pale)]">
+    <section className="relative overflow-hidden bg-[var(--mnv-pale)] pb-[clamp(4rem,9vw,8rem)] pt-[var(--section-y)]">
       <div className="shell">
         <SectionHeading
           eyebrow="By the numbers"
-          lines={["Scale that stays close", "to the client."]}
-          className="max-w-[40rem]"
+          lines={[
+            "Scale that stays",
+            <span key="close">
+              close <span className="accent">to the client.</span>
+            </span>,
+          ]}
+          className="max-w-[42rem]"
         />
+      </div>
 
-        <div className="mt-16 border-t border-[var(--mnv-border)] lg:mt-24">
-          {STATS.map((stat, i) => (
+      {/* Four moments rather than four metrics. The numeral holds while its own
+          block scrolls past, so each one gets the viewport to itself. */}
+      <div className="mt-20 lg:mt-28">
+        {STATS.map((stat, i) => {
+          const flip = i % 2 === 1;
+          return (
             <div
               key={stat.label}
-              className={`flex flex-col gap-4 border-b border-[var(--mnv-border)] py-10 sm:items-center sm:gap-10 lg:py-14 ${
-                i % 2 === 1 ? "sm:flex-row-reverse" : "sm:flex-row"
-              }`}
+              className="shell grid min-h-[58vh] items-center gap-y-6 lg:min-h-[72vh] lg:grid-cols-12 lg:gap-x-10"
             >
-              <MaskedHeading
-                as="p"
-                lines={[stat.value]}
-                className="numeral shrink-0 text-[clamp(4rem,12vw,10.5rem)] leading-[0.8] text-[#d7cce5] sm:w-[38%]"
-              />
-
-              <Reveal delay={0.1} className="sm:flex-1">
-                <div
-                  className={
-                    i % 2 === 1 ? "sm:text-right" : undefined
-                  }
-                >
-                  <h3 className="subhead text-[var(--mnv-ink)]">{stat.label}</h3>
+              <div
+                className={`lg:col-span-7 ${
+                  flip ? "lg:order-2 lg:col-start-6" : "lg:order-1"
+                }`}
+              >
+                <div className="lg:sticky lg:top-[26vh]">
                   <p
-                    className={`body-text mt-3 max-w-[38ch] text-[0.9375rem] ${
-                      i % 2 === 1 ? "sm:ml-auto" : ""
+                    className={`numeral select-none text-[clamp(5.5rem,17vw,14.5rem)] leading-[0.76] text-[#cfc2e2] ${
+                      flip ? "bleed-right text-right" : "bleed-left"
+                    }`}
+                  >
+                    {stat.value}
+                  </p>
+                </div>
+              </div>
+
+              <Reveal
+                delay={0.08}
+                className={`lg:col-span-5 ${
+                  flip ? "lg:order-1 lg:col-start-1 lg:row-start-1" : "lg:order-2"
+                }`}
+              >
+                <div className={flip ? "lg:text-right" : undefined}>
+                  <span
+                    aria-hidden="true"
+                    className={`mb-6 block h-px w-14 bg-[var(--mnv-lavender)] ${
+                      flip ? "lg:ml-auto" : ""
+                    }`}
+                  />
+                  <h3 className="text-[clamp(1.5rem,2.4vw,2.2rem)] font-medium leading-[1.08] tracking-[-0.025em] text-[var(--mnv-ink)]">
+                    {stat.label}
+                  </h3>
+                  <p
+                    className={`body-text mt-4 max-w-[36ch] text-[0.9375rem] ${
+                      flip ? "lg:ml-auto" : ""
                     }`}
                   >
                     {stat.note}
@@ -65,8 +92,8 @@ export default function StatsStory() {
                 </div>
               </Reveal>
             </div>
-          ))}
-        </div>
+          );
+        })}
       </div>
     </section>
   );

@@ -9,14 +9,14 @@ export default function ServiceAccordion() {
   const reduce = useReducedMotion();
 
   return (
-    <ul className="border-t border-[var(--mnv-border)]">
+    <ul className="border-t border-white/14">
       {services.map((service) => {
         const open = openId === service.id;
         const panelId = `service-panel-${service.id}`;
         const buttonId = `service-button-${service.id}`;
 
         return (
-          <li key={service.id} className="border-b border-[var(--mnv-border)]">
+          <li key={service.id} className="border-b border-white/14">
             <h3>
               <button
                 id={buttonId}
@@ -26,15 +26,15 @@ export default function ServiceAccordion() {
                 onClick={() => setOpenId(open ? null : service.id)}
                 className="flex w-full items-center gap-5 py-6 text-left"
               >
-                <span className="numeral text-[0.75rem] tracking-[0.16em] text-[var(--mnv-lavender)]">
+                <span className="numeral text-[0.75rem] tracking-[0.16em] text-[var(--mnv-lavender-light)]">
                   {service.index}
                 </span>
-                <span className="flex-1 text-[1.125rem] font-medium text-[var(--mnv-ink)]">
+                <span className="flex-1 text-[1.125rem] font-medium text-white">
                   {service.title}
                 </span>
                 <span
                   aria-hidden="true"
-                  className="relative size-4 shrink-0 text-[var(--mnv-purple)]"
+                  className="relative size-4 shrink-0 text-[var(--mnv-lavender-light)]"
                 >
                   <span className="absolute left-0 top-1/2 h-px w-4 -translate-y-1/2 bg-current" />
                   <span
@@ -61,7 +61,7 @@ export default function ServiceAccordion() {
                     <p className="body-text max-w-[46ch]">{service.description}</p>
                     <a
                       href={service.href}
-                      className="group mt-5 inline-flex items-center gap-2.5 text-[0.9375rem] font-medium text-[var(--mnv-purple)]"
+                      className="group mt-5 inline-flex items-center gap-2.5 text-[0.9375rem] font-medium text-white"
                     >
                       Explore {service.title}
                       <svg

@@ -4,23 +4,46 @@ import ServiceOrbital from "./ServiceOrbital";
 
 export default function Services() {
   return (
-    <section id="services" className="section-y bg-[var(--mnv-pale)]">
-      <div className="shell">
+    <section
+      id="services"
+      className="on-dark grain section-y relative isolate overflow-hidden"
+      style={{
+        background:
+          "radial-gradient(118% 86% at 68% 44%, #412763 0%, #2b1844 44%, #1a1226 100%)",
+      }}
+    >
+      {/* The ring carried through as an oversized outline, cropped by the section. */}
+      <svg
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-[22%] -top-[32%] h-[120vh] w-[120vh] opacity-[0.1]"
+        viewBox="0 0 100 100"
+      >
+        <circle cx="50" cy="50" r="46" fill="none" stroke="#ffffff" strokeWidth="0.3" />
+        <circle cx="50" cy="50" r="31" fill="none" stroke="#ffffff" strokeWidth="0.18" />
+      </svg>
+
+      <div className="shell relative">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <SectionHeading
               eyebrow="Our expertise"
-              lines={["Expertise around every", "side of your business."]}
+              lines={[
+                "Expertise around",
+                <span key="accent">
+                  every side of <span className="accent">your business.</span>
+                </span>,
+              ]}
+              className="text-white"
             />
           </div>
-          <p className="lede max-w-[52ch] lg:col-span-5 lg:pb-2">
+          <p className="lede max-w-[50ch] lg:col-span-5 lg:pb-3">
             From regulatory compliance to financial leadership, MNV brings
             specialist expertise together around one objective: helping your
             business move forward with confidence.
           </p>
         </div>
 
-        <div className="mt-16 lg:mt-24">
+        <div className="mt-20 lg:mt-28">
           <div className="hidden lg:block">
             <ServiceOrbital />
           </div>

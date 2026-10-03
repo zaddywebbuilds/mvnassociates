@@ -1,11 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope } from "next/font/google";
+import { Instrument_Serif, Manrope } from "next/font/google";
 import "./globals.css";
 
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+/** Editorial italic used only on accent words. Manrope ships no true italic. */
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["italic"],
   display: "swap",
 });
 
@@ -57,7 +66,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${manrope.variable} antialiased`}>
+    <html
+      lang="en"
+      className={`${manrope.variable} ${instrumentSerif.variable} antialiased`}
+    >
       <head>
         {/* Scroll reveals are observer-driven; without JS the lines must simply be shown. */}
         <noscript>

@@ -30,7 +30,8 @@ export const insights: Insight[] = [
     excerpt:
       "The structure chosen at incorporation shapes tax treatment, reporting duties and funding options for years afterwards.",
     image: asset("/images/insight-growth.webp"),
-    imageAlt: "Curved marble steps and planting beside a still reflecting pool",
+    imageAlt:
+      "Glass bar charts and a rising arrow on a terrace overlooking the Dubai skyline at sunset",
     href: "#insights",
   },
   {
@@ -39,9 +40,9 @@ export const insights: Insight[] = [
     title: "Why CFO services are in high demand among startups and SMEs",
     excerpt:
       "Growing companies need senior financial judgement long before they can justify a permanent CFO on the payroll.",
-    image: asset("/images/insight-interior.webp"),
+    image: asset("/images/insight-network.webp"),
     imageAlt:
-      "A lounge interior with floor to ceiling windows framing the Burj Khalifa at sunset",
+      "Connected figures arranged across stone plinths with the Dubai skyline behind",
     href: "#insights",
   },
 ];

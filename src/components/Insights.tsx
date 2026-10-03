@@ -32,7 +32,12 @@ export default function Insights() {
           <div className="lg:col-span-6">
             <SectionHeading
               eyebrow="Insights"
-              lines={["Perspective for", "what's next."]}
+              lines={[
+                "Perspective for",
+                <span key="next" className="accent">
+                  what&apos;s next.
+                </span>,
+              ]}
             />
           </div>
           <p className="lede max-w-[48ch] lg:col-span-5 lg:col-start-8 lg:pb-2">

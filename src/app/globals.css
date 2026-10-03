@@ -40,6 +40,7 @@
   --color-line: var(--mnv-border);
 
   --font-sans: var(--font-manrope), "Inter", Arial, sans-serif;
+  --font-serif: var(--font-serif), Georgia, serif;
 }
 
 * {
@@ -88,20 +89,57 @@ body {
   padding-block: var(--section-y);
 }
 
+/*
+ * Controlled grid breaks. A luxury editorial page earns its feel partly by
+ * letting chosen elements escape the measure rather than aligning everything.
+ */
+.bleed-right {
+  margin-right: calc(var(--gutter) * -1);
+}
+
+@media (min-width: 1024px) {
+  .bleed-right {
+    margin-right: calc((100vw - min(100vw, var(--max-w))) / -2 - var(--gutter));
+  }
+}
+
+.bleed-left {
+  margin-left: calc(var(--gutter) * -1);
+}
+
+@media (min-width: 1024px) {
+  .bleed-left {
+    margin-left: calc((100vw - min(100vw, var(--max-w))) / -2 - var(--gutter));
+  }
+}
+
 /* ---------- Typography ---------- */
 
 .display {
-  font-size: clamp(2.5rem, 5.8vw, 5.25rem);
-  line-height: 0.98;
-  letter-spacing: -0.035em;
+  font-size: clamp(2.6rem, 6.2vw, 5.75rem);
+  line-height: 0.93;
+  letter-spacing: -0.04em;
   font-weight: 500;
 }
 
 .headline {
-  font-size: clamp(2rem, 4.4vw, 3.9rem);
-  line-height: 1.02;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.1rem, 4.8vw, 4.25rem);
+  line-height: 0.96;
+  letter-spacing: -0.035em;
   font-weight: 500;
+}
+
+/*
+ * Editorial accent. One phrase per headline, never more: the contrast between
+ * the geometric sans and the serif italic is what carries the whole type system.
+ */
+.accent {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  /* Instrument Serif runs small against Manrope at the same size. */
+  font-size: 1.1em;
 }
 
 .subhead {

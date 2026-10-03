@@ -9,14 +9,16 @@ export default function ContactCTA() {
       className="on-dark grain relative isolate overflow-hidden"
       style={{
         background:
-          "radial-gradient(110% 80% at 50% 38%, #3f2360 0%, #2a1740 46%, #17131c 100%)",
+          "radial-gradient(118% 86% at 50% 72%, #3a2057 0%, #211334 44%, #120d1a 100%)",
       }}
     >
-      {/* The ring returns, closed. Open in the hero, complete at the end. */}
+      {/* The ring returns, closed. Open in the hero, complete at the end. Most of
+          it sits outside the frame, so the section reads as a fragment of
+          something much larger. */}
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[135vw] w-[135vw] -translate-x-1/2 -translate-y-1/2 opacity-80
-          md:h-[95vw] md:w-[95vw]
-          lg:h-[72vw] lg:w-[72vw] lg:max-h-[940px] lg:max-w-[940px]"
+        className="pointer-events-none absolute left-1/2 top-[78%] -z-10 h-[170vw] w-[170vw] -translate-x-1/2 -translate-y-1/2 opacity-90
+          md:h-[128vw] md:w-[128vw]
+          lg:top-[76%] lg:h-[104vw] lg:w-[104vw] lg:max-h-[1500px] lg:max-w-[1500px]"
       >
         <OrbitalRing tone="dark" complete className="h-full w-full" />
       </div>
@@ -30,8 +32,13 @@ export default function ContactCTA() {
         </Reveal>
 
         <MaskedHeading
-          lines={["What could your", "business unlock next?"]}
-          className="display mt-8 max-w-[18ch] text-balance text-white"
+          lines={[
+            "What could your",
+            <span key="next">
+              business unlock <span className="accent">next?</span>
+            </span>,
+          ]}
+          className="display mt-8 max-w-[18ch] text-balance text-[clamp(2.8rem,7vw,6.5rem)] text-white"
         />
 
         <Reveal delay={0.16}>

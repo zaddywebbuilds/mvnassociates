@@ -21,8 +21,12 @@ export default function StatementSection() {
             className="display text-white/55"
           />
           <MaskedHeading
-            lines={["It needs clarity."]}
-            className="display mt-2 text-white"
+            lines={[
+              <span key="clarity">
+                It needs <span className="accent">clarity.</span>
+              </span>,
+            ]}
+            className="display mt-3 text-[clamp(3rem,7.4vw,7rem)] text-white"
             delay={0.14}
           />
 

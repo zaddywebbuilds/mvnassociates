@@ -117,7 +117,7 @@ function Ring({ tone, complete, quality, animate }: Omit<SceneProps, "active">) 
 
         {/* Purple band crossing the primary plane. Rings at different attitudes are
             what make this read as a built object rather than a drawn circle. */}
-        <mesh rotation={[1.08, 0.12, 0.3]}>
+        <mesh rotation={[0.74, 0.14, 0.26]}>
           <torusGeometry
             args={[2.26, 0.052, 18, Math.round(quality.segments * 0.8), complete ? Math.PI * 2 : Math.PI * 1.45]}
           />
