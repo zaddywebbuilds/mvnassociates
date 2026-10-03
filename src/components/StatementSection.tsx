@@ -1,24 +1,45 @@
+import Image from "next/image";
+import { asset } from "@/lib/asset";
 import MagneticButton from "./MagneticButton";
+import { EdgeLight } from "./env/Ambient";
 import { MaskedHeading, Reveal } from "./Reveal";
 
 export default function StatementSection() {
   return (
-    <section className="grain relative isolate overflow-hidden bg-[var(--mnv-purple)] section-y">
-      {/* A single enormous ring, mostly outside the frame. Restraint is the point. */}
-      <svg
+    <section className="grain relative isolate flex min-h-[86svh] items-center overflow-hidden py-[clamp(4rem,9vw,8rem)]">
+      <Image
+        src={asset("/images/statement-hall.webp")}
+        alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute -left-[28%] top-1/2 h-[150vh] w-[150vh] -translate-y-1/2 opacity-[0.16] sm:-left-[18%]"
-        viewBox="0 0 100 100"
-      >
-        <circle cx="50" cy="50" r="46" fill="none" stroke="#ffffff" strokeWidth="0.35" />
-        <circle cx="50" cy="50" r="33" fill="none" stroke="#ffffff" strokeWidth="0.2" />
-      </svg>
+        fill
+        sizes="100vw"
+        className="-z-20 object-cover"
+      />
 
-      <div className="shell relative">
-        <div className="ml-auto max-w-[46rem] lg:w-[62%]">
+      {/*
+       * The type sits on the crystal side, which is the darker half and so the
+       * better ground for white. What it needs is calm rather than contrast, so
+       * the scrim settles the detail on the left and releases toward the arch.
+       */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10"
+        style={{
+          background: [
+            // Heavier low on the left, where the small copy sits.
+            "linear-gradient(to top, rgba(36,18,58,0.72) 0%, rgba(36,18,58,0) 52%)",
+            "linear-gradient(100deg, rgba(40,20,64,0.84) 0%, rgba(40,20,64,0.74) 28%, rgba(43,22,68,0.44) 54%, rgba(45,24,70,0.14) 76%, rgba(45,24,70,0.04) 100%)",
+          ].join(", "),
+        }}
+      />
+
+      <EdgeLight className="top-0" />
+
+      <div className="shell relative w-full">
+        <div className="max-w-[40rem] lg:max-w-[52%]">
           <MaskedHeading
             lines={["Your business doesn't need", "more complexity."]}
-            className="display text-white/55"
+            className="display text-white/70"
           />
           <MaskedHeading
             lines={[
@@ -31,7 +52,7 @@ export default function StatementSection() {
           />
 
           <Reveal delay={0.22}>
-            <p className="lede mt-9 max-w-[52ch]">
+            <p className="lede mt-9 max-w-[46ch] text-white/80">
               Whether you are establishing a business, responding to regulatory
               change or preparing for the next stage of growth, MNV brings the
               expertise together to help you move with confidence.
@@ -47,6 +68,8 @@ export default function StatementSection() {
           </Reveal>
         </div>
       </div>
+
+      <EdgeLight className="bottom-0" />
     </section>
   );
 }
