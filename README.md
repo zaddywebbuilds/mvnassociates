@@ -59,7 +59,6 @@ Theming is semantic rather than per-component. The page is dark by default and `
 - TypeScript
 - Tailwind CSS
 - Framer Motion
-- Three.js with React Three Fiber and Drei
 
 ## Running locally
 
@@ -123,7 +122,7 @@ A few judgement calls worth flagging:
 src/
   app/            layout, page composition, design tokens
   components/     section components and UI primitives
-    three/        the WebGL scene
+    env/          the lighting system
   data/           services and insights content
   hooks/          motion preferences and viewport observers
 public/images/    photography

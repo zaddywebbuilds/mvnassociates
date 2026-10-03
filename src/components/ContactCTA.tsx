@@ -1,70 +1,85 @@
+import Image from "next/image";
+import { asset } from "@/lib/asset";
 import MagneticButton from "./MagneticButton";
-import OrbitalRing from "./OrbitalRing";
+import { EdgeLight } from "./env/Ambient";
 import { MaskedHeading, Reveal } from "./Reveal";
 
 export default function ContactCTA() {
   return (
     <section
       id="contact"
-      className="grain relative isolate overflow-hidden"
-      style={{
-        background:
-          "radial-gradient(118% 86% at 50% 72%, #3a2057 0%, #211334 44%, #120d1a 100%)",
-      }}
+      className="grain relative isolate flex min-h-[80svh] items-center overflow-hidden py-[clamp(3.5rem,7vw,6rem)]"
     >
-      {/* The ring returns, closed. Open in the hero, complete at the end. Most of
-          it sits outside the frame, so the section reads as a fragment of
-          something much larger. */}
+      <Image
+        src={asset("/images/cta-hall.webp")}
+        alt=""
+        aria-hidden="true"
+        fill
+        sizes="100vw"
+        priority={false}
+        className="-z-20 object-cover"
+      />
+
+      {/*
+       * Type sits on the layered side and the archway is left open on the right.
+       * The image goes from dense to clear across its width, so the composition
+       * does the closing line's work without the copy having to point at it.
+       */}
       <div
-        className="pointer-events-none absolute left-1/2 top-[76%] -z-10 h-[150vw] w-[150vw] -translate-x-1/2 -translate-y-1/2 opacity-90
-          md:h-[112vw] md:w-[112vw]
-          lg:top-[72%] lg:h-[84vw] lg:w-[84vw] lg:max-h-[1150px] lg:max-w-[1150px]"
-      >
-        <OrbitalRing tone="dark" complete className="h-full w-full" />
-      </div>
+        aria-hidden="true"
+        className="absolute inset-0 -z-10"
+        style={{
+          background: [
+            "linear-gradient(to top, rgba(18,11,30,0.72) 0%, rgba(18,11,30,0) 56%)",
+            "linear-gradient(100deg, rgba(18,11,30,0.9) 0%, rgba(20,12,33,0.8) 30%, rgba(24,14,38,0.46) 56%, rgba(26,16,42,0.12) 80%, rgba(26,16,42,0) 100%)",
+          ].join(", "),
+        }}
+      />
 
-      <div className="shell relative flex min-h-[76svh] flex-col items-center justify-center py-20 text-center">
-        <Reveal>
-          <p className="eyebrow flex items-center justify-center gap-3">
-            <span className="inline-block h-px w-7 bg-current opacity-50" aria-hidden="true" />
-            Let&apos;s talk
-          </p>
-        </Reveal>
+      <EdgeLight className="top-0" />
 
-        <MaskedHeading
-          lines={[
-            "What could your",
-            <span key="next">
-              business unlock <span className="accent">next?</span>
-            </span>,
-          ]}
-          className="display mt-8 max-w-[18ch] text-balance text-[clamp(2.8rem,7vw,6.5rem)] text-white"
-        />
-
-        <Reveal delay={0.16}>
-          <p className="lede mx-auto mt-8 max-w-[50ch]">
-            Whether you are solving today&apos;s challenge or preparing for
-            tomorrow&apos;s opportunity, start the conversation with MNV.
-          </p>
-        </Reveal>
-
-        <Reveal delay={0.24}>
-          <div className="mt-11">
-            <MagneticButton href="#contact" variant="onDark">
-              Talk to an advisor
-            </MagneticButton>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.32}>
-          <div className="mt-16 flex items-center justify-center gap-4">
-            <span className="h-px w-10 bg-white/25" aria-hidden="true" />
-            <p className="signature text-[0.9375rem] text-[var(--mnv-lavender-light)]">
-              unlock your growth
+      <div className="shell relative w-full">
+        <div className="max-w-[40rem] lg:max-w-[54%]">
+          <Reveal>
+            <p className="eyebrow flex items-center gap-3">
+              <span className="inline-block h-px w-7 bg-current opacity-50" aria-hidden="true" />
+              Let&apos;s talk
             </p>
-            <span className="h-px w-10 bg-white/25" aria-hidden="true" />
-          </div>
-        </Reveal>
+          </Reveal>
+
+          <MaskedHeading
+            lines={[
+              "What could your",
+              <span key="next">
+                business unlock <span className="accent">next?</span>
+              </span>,
+            ]}
+            className="display mt-7 text-[clamp(2.6rem,6vw,5.5rem)] text-white"
+          />
+
+          <Reveal delay={0.16}>
+            <p className="lede mt-7 max-w-[44ch] text-white/80">
+              Whether you are solving today&apos;s challenge or preparing for
+              tomorrow&apos;s opportunity, start the conversation with MNV.
+            </p>
+          </Reveal>
+
+          {/* Action and signature share a baseline rather than stacking apart */}
+          <Reveal delay={0.24}>
+            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
+              <MagneticButton href="#contact" variant="onDark">
+                Talk to an advisor
+              </MagneticButton>
+
+              <span className="flex items-center gap-4">
+                <span className="h-px w-10 bg-white/30" aria-hidden="true" />
+                <span className="signature text-[0.9375rem] text-[var(--mnv-lavender-light)]">
+                  unlock your growth
+                </span>
+              </span>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
