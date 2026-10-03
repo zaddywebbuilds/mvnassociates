@@ -20,9 +20,9 @@ The approach is roughly:
 
 The page is built around one recurring motif: a dimensional ring representing connection, continuity and MNV sitting at the centre of several advisory disciplines.
 
-It carries a small piece of visual storytelling. In the hero the ring is **open**, an unfinished arc. In the closing section it returns **complete**. The intent is progression and growth, stated quietly rather than spelled out.
+In the hero the ring appears as a **filmed installation**, a physical sculpture on a terrace above the Dubai skyline. It returns at the close of the page as a **complete** WebGL ring. The hero version is open and physical, the closing one abstract and resolved.
 
-The ring is built from crossing planes at different attitudes rather than concentric circles facing the viewer, because flat circles read as drawn graphics while crossing planes read as a built object.
+The hero clip is a palindrome, forward then reversed, so the slow orbit loops without a visible cut back to its opening angle. It carries no audio track, is marked decorative, does not autoplay under `prefers-reduced-motion`, and is not loaded below the tablet breakpoint where the hero is deliberately type led.
 
 ### Page rhythm
 

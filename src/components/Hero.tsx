@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
+import HeroVideo from "./HeroVideo";
 import MagneticButton from "./MagneticButton";
-import OrbitalRing from "./OrbitalRing";
 
 const MARKERS = [
   { value: "10+", label: "Years of\nexperience" },
@@ -12,6 +12,11 @@ const MARKERS = [
 const delay = (ms: number) => ({ "--delay": `${ms}ms` }) as CSSProperties;
 const lineDelay = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 
+const FEATHER = [
+  "linear-gradient(to right, transparent 0%, #000 24%, #000 100%)",
+  "linear-gradient(to bottom, transparent 0%, #000 13%, #000 87%, transparent 100%)",
+].join(", ");
+
 export default function Hero() {
   return (
     <section className="grain relative isolate overflow-hidden bg-white pt-[76px]">
@@ -20,24 +25,40 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(118% 92% at 74% 44%, #f0e9f8 0%, #f9f7fc 44%, #ffffff 74%)",
+            "radial-gradient(112% 90% at 72% 46%, #f3edfa 0%, #faf8fd 46%, #ffffff 76%)",
         }}
       />
 
-      {/* The object sits close enough to be cropped by the viewport, and large
-          enough to occupy roughly half the composition. */}
+      {/* The installation, running off the right edge of the screen. Its left
+          edge is feathered so it reads as part of the page rather than as a
+          rectangle dropped onto it. */}
       <div
-        className="pointer-events-none absolute -z-[5]
-          left-1/2 top-[60%] h-[118vw] w-[118vw] -translate-x-1/2 -translate-y-1/2 opacity-[0.5]
-          md:left-auto md:right-[-18%] md:top-1/2 md:h-[92vw] md:w-[92vw] md:translate-x-0 md:opacity-100
-          lg:right-[-12%] lg:h-[78vw] lg:w-[78vw]
-          xl:right-[-7%] xl:h-[71vw] xl:w-[71vw] xl:max-h-[1000px] xl:max-w-[1000px]"
+        className="fade-in pointer-events-none absolute -z-[5] right-0 top-1/2 hidden
+          aspect-video w-[64vw] -translate-y-1/2 md:block
+          lg:w-[60vw] xl:w-[58vw] xl:max-w-[1000px]"
+        style={{
+          ...delay(260),
+          // Feathered on all four sides so the footage dissolves into the page
+          // instead of sitting on it as a rectangle.
+          maskImage: FEATHER,
+          WebkitMaskImage: FEATHER,
+          maskComposite: "intersect",
+          WebkitMaskComposite: "source-in",
+        }}
       >
-        <OrbitalRing tone="light" complete={false} className="h-full w-full" />
+        <HeroVideo />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 34%)",
+          }}
+        />
       </div>
 
       <div className="shell relative z-10 flex min-h-[calc(94svh-76px)] flex-col justify-center py-12 md:py-14">
-        <div className="max-w-[40rem] lg:max-w-[56%]">
+        <div className="max-w-[40rem] lg:max-w-[52%]">
           <p className="eyebrow rise flex items-center gap-3" style={delay(100)}>
             <span className="inline-block h-px w-7 bg-current opacity-50" aria-hidden="true" />
             MNV Associates
@@ -66,16 +87,13 @@ export default function Hero() {
             TAX. FINANCE. OPERATIONS. STRATEGY.
           </p>
 
-          <p className="lede rise mt-5 max-w-[46ch]" style={delay(500)}>
+          <p className="lede rise mt-5 max-w-[44ch]" style={delay(500)}>
             MNV Associates helps businesses across the UAE navigate complexity,
             strengthen operations and make confident decisions at every stage of
             growth.
           </p>
 
-          <div
-            className="rise mt-10 flex flex-wrap items-center gap-4"
-            style={delay(580)}
-          >
+          <div className="rise mt-10 flex flex-wrap items-center gap-4" style={delay(580)}>
             <MagneticButton href="#contact">Talk to an advisor</MagneticButton>
             <MagneticButton href="#services" variant="ghost">
               Explore our services
@@ -109,30 +127,6 @@ export default function Hero() {
           </ul>
         </div>
       </div>
-
-      {/* The third depth plane. A segment of ring sitting close to the camera,
-          thrown out of focus, so the composition reads as space rather than
-          as layers stacked on a flat page. */}
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 1000 1000"
-        className="fade-in pointer-events-none absolute z-20 hidden
-          lg:block lg:-right-[16%] lg:-bottom-[52%] lg:h-[82vw] lg:w-[82vw]"
-        style={{ ...delay(900), overflow: "visible", filter: "blur(14px)" }}
-      >
-        <circle
-          cx="500"
-          cy="500"
-          r="430"
-          fill="none"
-          stroke="var(--mnv-purple)"
-          strokeWidth="44"
-          strokeLinecap="round"
-          strokeDasharray="470 2232"
-          strokeDashoffset="-1470"
-          opacity="0.42"
-        />
-      </svg>
     </section>
   );
 }
