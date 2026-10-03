@@ -20,9 +20,9 @@ The approach is roughly:
 
 The page is built around one recurring motif: a dimensional ring representing connection, continuity and MNV sitting at the centre of several advisory disciplines.
 
-In the hero the ring appears as a **filmed installation**, a physical sculpture on a terrace above the Dubai skyline. It returns at the close of the page as a **complete** WebGL ring. The hero version is open and physical, the closing one abstract and resolved.
+In the hero the ring appears as a **filmed installation**, a physical sculpture on a terrace above the Dubai skyline. It returns in the services section as an orbital system, and the architectural halls that carry the statement and the closing section are built from the same vocabulary of stone, glass and gold light.
 
-The hero clip is a palindrome, forward then reversed, so the slow orbit loops without a visible cut back to its opening angle. It carries no audio track, is marked decorative, does not autoplay under `prefers-reduced-motion`, and is not loaded below the tablet breakpoint where the hero is deliberately type led.
+Both clips are palindromes, forward then reversed, so the slow orbit loops without a visible cut back to its opening angle. Neither carries an audio track, both are marked decorative, neither autoplays under `prefers-reduced-motion`, and the hero clip is not loaded below the tablet breakpoint where the hero is deliberately type led.
 
 ### Page rhythm
 
@@ -59,21 +59,6 @@ Theming is semantic rather than per-component. The page is dark by default and `
 - TypeScript
 - Tailwind CSS
 - Framer Motion
-- Three.js with React Three Fiber and Drei, for the services orbital
-
-## Where the 3D is, and why
-
-There is one WebGL moment on the page: the services orbital. It is live rather
-than a recording because it answers the choice being made, turning to face the
-service under the cursor or keyboard focus. Everything else that looks
-three-dimensional is a render or a video, which is cheaper and sharper for
-anything that does not need to react.
-
-The canvas carries the sphere, the orbit planes and the lighting. Every service
-name, number and description sits in HTML layered over it, so nothing in the
-scene is the only copy of anything, and the whole section works with a keyboard.
-No GL context is created below the desktop breakpoint, where the section falls
-back to the accordion.
 
 ## Running locally
 
@@ -111,13 +96,11 @@ Deploying to Vercel instead needs no changes: leave `GITHUB_PAGES` unset and the
 
 The page carries visual effects but is built to stay fast and usable.
 
-- WebGL is dynamically imported and never blocks first render.
-- Each ring canvas pauses rendering entirely when it is outside the viewport.
-- Quality tiers scale device pixel ratio, geometry segments and detail by screen size, CPU cores and device memory.
-- Reflective surfaces use polished rather than mirrored materials. A fully metallic surface in a sparse environment reflects black, which is what makes most WebGL accents look cheap.
-- If WebGL is unavailable or the scene throws, an error boundary swaps in a drawn SVG ring that matches the composition, so the layout never breaks.
-- The services orbital is DOM and SVG, not WebGL, so the labels stay crisp, selectable and keyboard reachable. On small screens it becomes an accordion rather than being squeezed.
-- No information exists only inside a 3D object.
+- Everything dimensional on the page is a render or a video rather than a live scene. Nothing here needs to react, so there is no runtime 3D to pay for: no WebGL context, no GPU work, no shader compilation on load.
+- Video is encoded as WebM with an MP4 fallback, so a browser fetches one or the other, never both. Audio and cover-art streams are stripped.
+- Footage is sized to the box it actually renders in rather than stretched, so it stays sharp without shipping pixels that are never seen.
+- Photography is pre-converted to WebP at the sizes it renders, which is why losing the image optimiser on a static host costs very little.
+- Every service name, number and description lives in HTML at every breakpoint, never only inside a video or an image.
 - Semantic landmarks, a single H1, visible focus states, `aria-expanded` on the accordion, descriptive alt text and a skip link.
 - `prefers-reduced-motion` is respected, including the scroll reveals, the magnetic buttons and the ring drift.
 - Scroll reveals are driven by IntersectionObserver with a `noscript` fallback that shows all content if JavaScript is unavailable.
