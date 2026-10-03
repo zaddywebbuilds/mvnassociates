@@ -51,7 +51,11 @@ export default function Services() {
           <div className="hidden lg:block">
             <ServiceOrbital />
           </div>
-          <div className="lg:hidden">
+
+          {/* All nine, in HTML. The installation carries the look; the names,
+              numbering and descriptions have to stay readable and keyboard
+              reachable, so they live here rather than inside the footage. */}
+          <div className="lg:mt-24">
             <ServiceAccordion />
           </div>
         </div>
